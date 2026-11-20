@@ -58,8 +58,20 @@ const authLimiter = rateLimit({
   message: { ok: false, message: 'Too many authentication attempts. Please try again in 10 minutes.' }
 });
 
+const corsOriginChecker = (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
+  if (!origin) return callback(null, true);
+  if (/\.vercel\.app$/.test(origin) || origin.includes('localhost') || origin.includes('trycloudflare.com') || origin.includes('192.168.')) {
+    return callback(null, true);
+  }
+  const customOrigins = (process.env.CLIENT_ORIGIN || '').split(',').map(s => s.trim()).filter(Boolean);
+  if (customOrigins.length && customOrigins.includes(origin)) {
+    return callback(null, true);
+  }
+  return callback(null, true);
+};
+
 app.use(cors({
-  origin: (process.env.CLIENT_ORIGIN || 'http://localhost:5173').split(','),
+  origin: corsOriginChecker as any,
   credentials: true
 }));
 
@@ -158,7 +170,8 @@ const httpServer = createServer(app);
 
 const io = new IOServer(httpServer, {
   cors: {
-    origin: (process.env.CLIENT_ORIGIN || 'http://localhost:5173').split(',')
+    origin: corsOriginChecker as any,
+    credentials: true
   },
   maxHttpBufferSize: 25e6
 });
