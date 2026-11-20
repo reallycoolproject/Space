@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/api/:path*",
+      "destination": "https://volunteers-rendered-constructed-mar.trycloudflare.com/api/:path*"
+    },
+    {
+      "source": "/socket.io/:path*",
+      "destination": "https://volunteers-rendered-constructed-mar.trycloudflare.com/socket.io/:path*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

@@ -27,8 +27,8 @@ export const getApiBaseUrl = () => {
     return '';
   }
 
-  // For production, use relative path (same domain)
-  return '';
+  // 4. Default fallback for Vercel deployment to connect to active tunnel
+  return 'https://volunteers-rendered-constructed-mar.trycloudflare.com';
 };
 
 export const API_BASE = getApiBaseUrl();
