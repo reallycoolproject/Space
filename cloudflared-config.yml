@@ -1,0 +1,9 @@
+tunnel: space-app
+credentials-file: cloudflared-credentials.json
+
+ingress:
+  - hostname: space-app.trycloudflare.com
+    service: http://localhost:5173
+  - hostname: space-api.trycloudflare.com
+    service: http://localhost:3000
+  - service: http_status:404

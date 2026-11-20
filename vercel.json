@@ -1,0 +1,11 @@
+{
+  "framework": "vite",
+  "buildCommand": "npm --prefix homepage run build",
+  "outputDirectory": "homepage/dist",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
