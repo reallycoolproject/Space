@@ -1,5 +1,6 @@
 {
   "framework": "vite",
+  "installCommand": "npm --prefix homepage install",
   "buildCommand": "npm --prefix homepage run build",
   "outputDirectory": "homepage/dist",
   "rewrites": [

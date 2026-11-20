@@ -1,0 +1,9 @@
+{
+  "name": "space-app-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm --prefix homepage run build",
+    "install:homepage": "npm --prefix homepage install"
+  }
+}
