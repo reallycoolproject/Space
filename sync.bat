@@ -21,7 +21,7 @@ if %ERRORLEVEL% EQU 0 (
     echo.
     echo ==============================================
     echo [SUCCESS] Changes synced to GitHub successfully!
-    echo https://github.com/sssoollyy/Space
+    echo https://github.com/reallycoolproject/Space
     echo ==============================================
 ) else (
     echo.
